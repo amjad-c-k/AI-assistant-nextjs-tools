@@ -6,14 +6,14 @@ export default function Home() {
     const [messages, setMessages] = useState([
         {
             role: 'assistant',
-            content: `👋 **Welcome to AI Assistant!**
+            content: `👋 Welcome to AI Assistant!
 
 I can help you with:
-• 🌤️ **Weather** - "What's the weather in Attock?"
-• 📋 **Tasks** - "Add task: Buy groceries" or "Show my tasks"
-• 📈 **Stocks** - "What's Apple's stock price?"
-• 💱 **Currency** - "Convert 100 USD to Euro"
-• 💭 **Quotes** - "Give me an inspirational quote"
+• 🌤️ Weather - "What's the weather in Attock?"
+• 📋 Tasks - "Add task: Buy groceries" or "Show my tasks"
+• 📈 Stocks - "What's Apple's stock price?"
+• 💱 Currency - "Convert 100 USD to Euro"
+• 💭 Quotes - "Give me an inspirational quote"
 
 Try asking me anything!`,
             timestamp: new Date().toISOString()
