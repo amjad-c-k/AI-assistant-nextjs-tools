@@ -132,7 +132,7 @@ Try asking me anything!`,
                     {/* Tools Info */}
                     <div className="bg-gray-50 border-x border-gray-200 p-6">
                         <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                            🛠️ Available Tools
+                            🛠️ Tools AI Agent can work with
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {[

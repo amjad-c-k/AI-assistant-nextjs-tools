@@ -445,69 +445,69 @@ function generateFormattedResponse(userMessage, toolResults) {
     toolResults.forEach((result, index) => {
         if (result.tool === 'get_weather' && result.result.success) {
             const weather = result.result;
-            response += `🌤️ **Weather in ${weather.city}${weather.country ? ', ' + weather.country : ''}:**\n\n`;
-            response += `🌡️ **Temperature:** ${weather.temperature}°C\n`;
-            response += `☁️ **Condition:** ${weather.description}\n`;
-            response += `💧 **Humidity:** ${weather.humidity}%\n`;
-            response += `💨 **Wind:** ${weather.wind} km/h\n\n`;
+            response += `🌤️ Weather in ${weather.city}${weather.country ? ', ' + weather.country : ''}:\n\n`;
+            response += `🌡️ Temperature: ${weather.temperature}°C\n`;
+            response += `☁️ Condition: ${weather.description}\n`;
+            response += `💧 Humidity: ${weather.humidity}%\n`;
+            response += `💨 Wind: ${weather.wind} km/h\n\n`;
         }
         
         else if (result.tool === 'add_task' && result.result.success) {
-            response += `✅ **Task Added Successfully!**\n\n`;
-            response += `📝 **Title:** ${result.result.task.title}\n`;
-            response += `⭐ **Priority:** ${result.result.task.priority}\n`;
-            response += `📅 **Created:** ${new Date(result.result.task.createdAt).toLocaleString()}\n\n`;
+            response += `✅ Task Added Successfully!\n\n`;
+            response += `📝 Title: ${result.result.task.title}\n`;
+            response += `⭐ Priority: ${result.result.task.priority}\n`;
+            response += `📅 Created: ${new Date(result.result.task.createdAt).toLocaleString()}\n\n`;
         }
         else if (result.tool === 'get_random_quote' && result.result.success) {
             const quote = result.result;
-            response += `💭 **Inspirational Quote:**\n\n`;
+            response += `💭 Inspirational Quote:\n\n`;
             response += `"${quote.quote}"\n\n`;
-            response += `— **${quote.author}**\n`;
+            response += `— ${quote.author}\n`;
             if (quote.category) response += `📂 Category: ${quote.category}\n`;
             response += '\n';
         }
         
         else if (result.tool === 'get_tasks' && result.result.success) {
             const tasks = result.result;
-            response += `📋 **Your Tasks (${tasks.count} total):**\n\n`;
+            response += `📋 Your Tasks (${tasks.count} total):\n\n`;
             if (tasks.tasks.length === 0) {
                 response += "No tasks found. Add some tasks to get started!\n\n";
             } else {
                 tasks.tasks.forEach((task, idx) => {
                     const status = task.completed ? '✅' : '⏳';
-                    response += `${idx + 1}. ${status} **${task.title}** (${task.priority} priority)\n`;
+                    response += `${idx + 1}. ${status} ${task.title} (${task.priority} priority)\n`;
                 });
                 response += '\n';
             }
         }
         
         else if (result.tool === 'complete_task' && result.result.success) {
-            response += `✅ **Task Completed!**\n\n`;
-            response += `📝 **Task:** ${result.result.task.title}\n`;
-            response += `🎉 **Completed:** ${new Date(result.result.task.completedAt).toLocaleString()}\n\n`;
+            response += `✅ Task Completed!\n\n`;
+            response += `📝 Task: ${result.result.task.title}\n`;
+            response += `🎉 Completed: ${new Date(result.result.task.completedAt).toLocaleString()}\n\n`;
         }
         
         else if (result.tool === 'get_stock_price' && result.result.success) {
             const stock = result.result;
             const changeIcon = parseFloat(stock.change) >= 0 ? '📈' : '📉';
             const changeColor = parseFloat(stock.change) >= 0 ? '+' : '';
-            response += `${changeIcon} **${stock.symbol} Stock Price:**\n\n`;
-            response += `💰 **Current Price:** $${stock.price}\n`;
-            response += `📊 **Change:** ${changeColor}${stock.change} (${stock.changePercent}%)\n`;
-            if (stock.note) response += `ℹ️ **Note:** ${stock.note}\n`;
+            response += `${changeIcon} ${stock.symbol} Stock Price:\n\n`;
+            response += `💰 Current Price: $${stock.price}\n`;
+            response += `📊 Change: ${changeColor}${stock.change} (${stock.changePercent}%)\n`;
+            if (stock.note) response += `ℹ️ Note: ${stock.note}\n`;
             response += '\n';
         }
         
         else if (result.tool === 'convert_currency' && result.result.success) {
             const conv = result.result;
-            response += `💱 **Currency Conversion:**\n\n`;
-            response += `💸 **${conv.originalAmount} ${conv.fromCurrency}** = **${conv.convertedAmount} ${conv.toCurrency}**\n`;
-            response += `📊 **Exchange Rate:** 1 ${conv.fromCurrency} = ${conv.exchangeRate} ${conv.toCurrency}\n`;
-            response += `🕒 **Updated:** ${new Date().toLocaleString()}\n\n`;
+            response += `💱 Currency Conversion:\n\n`;
+            response += `💸 ${conv.originalAmount} ${conv.fromCurrency} = ${conv.convertedAmount} ${conv.toCurrency}\n`;
+            response += `📊 Exchange Rate: 1 ${conv.fromCurrency} = ${conv.exchangeRate} ${conv.toCurrency}\n`;
+            response += `🕒 Updated: ${new Date().toLocaleString()}\n\n`;
         }
         
         else if (!result.result.success) {
-            response += `❌ **Error:** ${result.result.error}\n\n`;
+            response += `❌ Error: ${result.result.error}\n\n`;
         }
     });
     
