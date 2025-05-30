@@ -286,14 +286,14 @@ const availableTools = [
     },
      {
         type: "function",
-        function: {
-            name: "get_random_quote",
-            description: "Get a random inspirational quote to motivate and inspire the user",
-            parameters: {
-                type: "object",
-                properties: {},
-                required: []
-            }
+    function: {
+        name: "get_random_quote",
+        description: "Get a random inspirational quote when the user specifically asks for quotes, motivation, or inspiration",
+        parameters: {
+            type: "object",
+            properties: {},
+            required: []
+        }
         }
     }
 ];
@@ -344,7 +344,7 @@ async function callGroqAI(userMessage) {
             messages: [
                 {
                     role: "system",
-                    content: "You are a helpful AI assistant with access to tools for weather, task management, stock prices, and currency conversion. When a user asks for something that requires a tool, call the appropriate function. You can call multiple functions if needed."
+                    content: "You are a helpful AI assistant with access to tools for weather, task management, stock prices, currency conversion, and inspirational quotes. Only use tools when the user specifically requests something that requires them. For simple greetings like 'hello' or 'hi', respond naturally without using any tools. Use the quote tool only when users specifically ask for quotes, motivation, or inspiration."
                 },
                 {
                     role: "user",
