@@ -5,7 +5,7 @@ A modern AI assistant built with **Next.js** that uses **Groq AI function callin
 ## 🎯 Project Overview
 
 This project demonstrates how to build a production-ready AI assistant that:
-- Uses **Next.js 14** for modern web development
+- Uses **Next.js** for modern web development
 - Implements **real AI function calling** with Groq AI
 - Integrates **6 different custom tools** with real-world APIs
 - Works with **100% free APIs** (no expensive AI subscriptions needed)
